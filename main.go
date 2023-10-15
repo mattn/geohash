@@ -17,5 +17,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if resp == nil {
+		fmt.Fprintf(os.Stderr, "The location %q not found\n", os.Args[1])
+		os.Exit(1)
+	}
 	fmt.Println(geohash.Encode(resp.Lat, resp.Lng))
 }
